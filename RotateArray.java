@@ -1,29 +1,29 @@
-import java.util.Arrays;
 
-public class RotateArray {
-    public static void main(String[] args) {
-        int[] a = {1, 2, 3, 4, 5, 6, 7};
-        int k = 3;
-
-        rotateArray(a, k);
-
-        System.out.println("Rotated array: " + Arrays.toString(a));
-    }
-
-    public static void rotateArray(int[] a, int k) {
-        int n = a.length;
-        k = k % n; // Ensure k is within the range [0, n)
-
-        int[] ans = new int[n];
-
-        for (int i = 0; i < n; i++) {
-            if (i < k) {
-                ans[i] = a[n - k + i];
-            } else {
-                ans[i] = a[i - k];
-            }
+class RotateArray{
+    public static void main(String[] args)
+    {
+        int []a={1,2,3,4,5,6};
+        int k=4,i;
+        int n=a.length;
+        reverse(a,0,n-1);
+        reverse(a,0,k-1);
+        reverse(a,k,n-1);
+        System.out.println("Sorted array is");
+        for(i=0;i<n;i++)
+        {
+            System.out.print(a[i]+" ");
         }
-
-        System.arraycopy(ans, 0, a, 0, n);
+        
+        
     }
+    public static void reverse(int[]a,int s,int e)
+    {
+        while(s<e){
+        int temp=a[s];
+        a[s]=a[e];
+        a[e]=temp;
+        s++;
+        e--;
+    }
+}
 }
